@@ -27,7 +27,7 @@ graph TD
 
     subgraph Middleware [中间件]
         D["Redis (缓存/分布式锁)"]
-        E[RabbitMQ (消息队列)]
+        E["RabbitMQ (消息队列)"]
     end
 
     subgraph Database [数据存储层]
