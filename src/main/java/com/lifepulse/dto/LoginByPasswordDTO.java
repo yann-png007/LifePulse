@@ -1,0 +1,4 @@
+package com.lifepulse.dto;
+
+public class LoginByPasswordDTO {
+}
