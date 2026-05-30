@@ -22,13 +22,13 @@ graph TD
     end
 
     subgraph ServiceLayer [应用服务层]
-        C{"LifePulse 主应用 (Spring Boot)"}
+        C["LifePulse 主应用 (Spring Boot)"]
     end
 
     subgraph Middleware [中间件]
-        D["Redis (缓存/分布式锁)"]
+        D["Redis (缓存/分布式锁/布隆过滤器)"]
         E["RabbitMQ (消息队列)"]
-        F[\"Caffeine (本地缓存)\"]
+        F["Caffeine (本地缓存)"]
     end
 
     subgraph Database [数据存储层]
@@ -36,10 +36,10 @@ graph TD
     end
 
     A --> B --> C
-    C  D
-    C  F
+    C <--> D
+    C <--> F
     C --> E
-    C  G
+    C <--> G
     E --> C
 ```
 
