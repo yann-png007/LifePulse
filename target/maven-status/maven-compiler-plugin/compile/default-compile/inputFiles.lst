@@ -1,3 +1,4 @@
+E:\LifePulse\LifePulse\src\main\java\com\lifepulse\dto\LoginByPasswordDTO.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\mapper\CouponStockMapper.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\enums\JwtErrorType.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\entity\Merchant.java
@@ -50,11 +51,13 @@ E:\LifePulse\LifePulse\src\main\java\com\lifepulse\controller\admin\MerchantAdmi
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\controller\admin\UserAdminController.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\constant\UserRoleConstant.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\mapper\MerchantMapper.java
+E:\LifePulse\LifePulse\src\main\java\com\lifepulse\service\BloomFilterInitService.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\controller\admin\MerchantCategoryAdminController.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\service\OrderService.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\exception\BizException.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\config\MybatisPlusConfig.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\service\impl\UserServiceImpl.java
+E:\LifePulse\LifePulse\src\main\java\com\lifepulse\dto\LoginByCodeDTO.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\service\impl\CouponUserRecordServiceImpl.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\config\GlobalExceptionHandler.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\dto\MerchantDTO.java
@@ -81,6 +84,7 @@ E:\LifePulse\LifePulse\src\main\java\com\lifepulse\dto\PageDTO.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\entity\MerchantCategory.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\entity\User.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\interceptor\LoginInterceptor.java
+E:\LifePulse\LifePulse\src\main\java\com\lifepulse\util\RandomUtil.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\controller\admin\CouponAdminController.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\service\MerchantCategoryService.java
 E:\LifePulse\LifePulse\src\main\java\com\lifepulse\controller\user\MerchantUserController.java

@@ -14,4 +14,20 @@ public class UserConstant {
     // 用户角色常量
     public static final Integer ROLE_USER = 0;
     public static final Integer ROLE_ADMIN = 1;
+
+    // --- 新增：自动注册相关常量 ---
+    /**
+     * 自动注册用户的默认用户名前缀
+     */
+    public static final String DEFAULT_USERNAME_PREFIX = "user_";
+
+    /**
+     * 自动注册用户的默认密码
+     */
+    public static final String DEFAULT_PASSWORD = "123456";
+
+    /**
+     * 自动注册用户的默认角色 (普通用户)
+     */
+    public static final String DEFAULT_ROLE = "USER";
 }

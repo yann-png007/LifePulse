@@ -2,9 +2,13 @@ package com.lifepulse.controller.user;
 
 import com.lifepulse.common.PageResult;
 import com.lifepulse.common.Result;
+import com.lifepulse.dto.LoginByCodeDTO;
+import com.lifepulse.dto.LoginByPasswordDTO;
 import com.lifepulse.entity.User;
 import com.lifepulse.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -22,12 +26,10 @@ public class UserController {
         return Result.success();
     }
 
-    // 登录
-    @PostMapping("/login")
-    public Result<String> login(String username,String password){
-        String token = userService.login(username,password);
-        return Result.success(token);
-    }
+    /**
+     * @deprecated 已废弃，请使用 /login/password 或 /login/code 接口
+     */
+
 
     // 分页查询
     @GetMapping("/page")
@@ -68,5 +70,39 @@ public class UserController {
     public Result<Void> logout(String token){
         userService.logout(token);
         return Result.success();
+    }
+
+    /**
+     * 发送手机登录验证码
+     * @param payload 包含手机号的请求体, e.g., {"phone": "138xxxxxxxx"}
+     * @return 统一响应结果
+     */
+    @PostMapping("/code")
+    public Result<Void> sendLoginCode(@RequestBody Map<String, String> payload) {
+        String phone = payload.get("phone");
+        userService.sendLoginCode(phone);
+        return Result.success();
+    }
+
+    /**
+     * 手机号 + 密码登录
+     * @param loginDTO 登录数据传输对象
+     * @return 包含Token的统一响应结果
+     */
+    @PostMapping("/login/password")
+    public Result<String> loginByPassword(@RequestBody LoginByPasswordDTO loginDTO) {
+        String token = userService.loginByPassword(loginDTO);
+        return Result.success(token);
+    }
+
+    /**
+     * 手机号 + 验证码登录或注册
+     * @param loginDTO 登录数据传输对象
+     * @return 包含Token的统一响应结果
+     */
+    @PostMapping("/login/code")
+    public Result<String> loginByCode(@RequestBody LoginByCodeDTO loginDTO) {
+        String token = userService.loginByCode(loginDTO);
+        return Result.success(token);
     }
 }

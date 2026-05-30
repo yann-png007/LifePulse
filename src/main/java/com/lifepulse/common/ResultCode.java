@@ -26,8 +26,11 @@ public enum ResultCode {
     // 通用场景
     REQUEST_BUSY(503, "请求繁忙，请稍后再试"),
     USERNAME_OR_PASSWORD_ERROR(1004, "用户名或密码错误"),
-    ACCOUNT_DISABLED(1005, "账号已被禁用"),
-    OLD_PASSWORD_ERROR(1006, "旧密码错误");
+    PASSWORD_ERROR(1005, "密码错误"),
+    OLD_PASSWORD_ERROR(1006, "旧密码错误"),
+    USER_NOT_EXIST(1007, "用户不存在"),
+    USER_ACCOUNT_DISABLE(1008, "账号已被禁用"),
+    VERIFY_CODE_ERROR(1009, "验证码错误");
 
     private final Integer code;
     private final String msg;

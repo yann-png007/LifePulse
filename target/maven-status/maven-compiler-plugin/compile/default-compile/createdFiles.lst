@@ -18,10 +18,12 @@ com\lifepulse\interceptor\LoginInterceptor.class
 com\lifepulse\dto\PageDTO.class
 com\lifepulse\enums\CouponStatusEnum.class
 com\lifepulse\config\RabbitMQConfig.class
+com\lifepulse\dto\LoginByCodeDTO.class
 com\lifepulse\mapper\UserMapper.class
 com\lifepulse\service\impl\UserBehaviorServiceImpl.class
 com\lifepulse\enums\CouponTypeEnum.class
 com\lifepulse\service\UserBehaviorService.class
+com\lifepulse\util\RandomUtil.class
 com\lifepulse\mapper\MerchantCategoryMapper.class
 com\lifepulse\util\JwtUtil.class
 com\lifepulse\constant\CacheConstant.class
@@ -60,6 +62,7 @@ com\lifepulse\controller\user\CouponUserController.class
 com\lifepulse\dto\UserBehaviorRecordDTO.class
 com\lifepulse\service\MerchantCategoryService.class
 com\lifepulse\service\MerchantService.class
+com\lifepulse\dto\LoginByPasswordDTO.class
 com\lifepulse\entity\User.class
 com\lifepulse\controller\admin\OrderAdminController.class
 com\lifepulse\util\RedisUtil.class
@@ -79,6 +82,7 @@ com\lifepulse\config\RedisConfig.class
 com\lifepulse\LifePulseApplication.class
 com\lifepulse\vo\CouponVO.class
 com\lifepulse\enums\JwtErrorType.class
+com\lifepulse\service\BloomFilterInitService.class
 com\lifepulse\annotation\AdminRequired.class
 com\lifepulse\constant\MQConstant.class
 com\lifepulse\config\WebConfig.class

@@ -13,12 +13,18 @@ public class CacheConstant {
     public static final String USER_BEHAVIOR_PREFIX = "lifepulse:behavior:";
     // 用户行为防重缓存前缀
     public static final String BEHAVIOR_REPEAT_PREFIX = "lifepulse:behavior:repeat:";
+    // 登录验证码缓存前缀
+    public static final String LOGIN_CODE_PREFIX = "lifepulse:login:code:";
+    // 注册分布式锁缓存前缀
+    public static final String REGISTER_LOCK_PREFIX = "lifepulse:register:lock:";
 
-    // 缓存过期时间 单位：秒
-    public static final Long LOGIN_TOKEN_EXPIRE = 604800L;
-    public static final Long COMMON_CACHE_EXPIRE = 3600L;
-    public static final Long CATEGORY_CACHE_EXPIRE = 7200L;
-    public static final Long EMPTY_DATA_EXPIRE = 60L;
-    // 新增：用户行为防重缓存过期时间（比如30秒，防止重复提交）
-    public static final Long BEHAVIOR_REPEAT_EXPIRE = 30L;
+    // 缓存过期时间
+    public static final Long LOGIN_TOKEN_EXPIRE = 604800L; // 7天，单位：秒
+    public static final Long COMMON_CACHE_EXPIRE = 3600L; // 1小时，单位：秒
+    public static final Long CATEGORY_CACHE_EXPIRE = 7200L; // 2小时，单位：秒
+    public static final Long EMPTY_DATA_EXPIRE = 60L; // 1分钟，单位：秒
+    // 用户行为防重缓存过期时间（比如30秒，防止重复提交）
+    public static final Long BEHAVIOR_REPEAT_EXPIRE = 30L; // 单位：秒
+    // 登录验证码过期时间
+    public static final java.time.Duration LOGIN_CODE_EXPIRE = java.time.Duration.ofMinutes(5);
 }

@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/lifepulse?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    username:  ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:}
+    username:
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   spring:
     rabbitmq:
@@ -27,7 +27,6 @@ redis:
   host: localhost
   port: 6379
   database: 0
-  timeout: 10000
   lettuce:
     pool:
       max-active: 8

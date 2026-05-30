@@ -8,10 +8,13 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+
+
+    @Select("select * from lp_user where phone=#{phone}")
+    User selectUserByPhone(String phone);
     @Select("select * from lp_user where id=#{id}")
     User selectUserById(Long id);
-    @Select("select * from lp_user where username=#{username}")
-    User selectUserByUsername(String username);
+
     @Insert("insert into lp_user(username,password,real_name,phone,gender,status) values(#{username},#{password},#{realName},#{phone},#{gender},#{status})")
     int insertUser(User user);
     @Update("update lp_user set username=#{username},password=#{password},real_name=#{realName},phone=#{phone},gender=#{gender},status=#{status} where id=#{id}")
@@ -29,4 +32,11 @@ public interface UserMapper extends BaseMapper<User> {
     // 修改密码
     @Update("update lp_user set password=#{newPwd} where id=#{userId}")
     int updatePwd(@Param("userId")Long userId,@Param("newPwd")String newPwd);
+
+    /**
+     * 查询所有用户的手机号（用于初始化布隆过滤器）
+     * @return 手机号列表
+     */
+    @Select("select phone from lp_user where phone is not null and phone != ''")
+    List<String> selectAllPhones();
 }

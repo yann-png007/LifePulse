@@ -28,8 +28,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
-@Service
+@Slf4j //日志注解，直接用 log.info() 打印日志
+@Service  //标记这是业务逻辑层，交给 Spring 管理。
 public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> implements CouponService {
 
     private final CouponStockMapper couponStockMapper;
@@ -48,7 +48,7 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> impleme
 
     // ==================== 管理员：创建优惠券 ====================
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)  //事务，只要报错就回滚事务
     public void createCoupon(CouponCreateDTO dto) {
         Coupon coupon = new Coupon();
         coupon.setCouponName(dto.getCouponName());
@@ -68,14 +68,17 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> impleme
     // ==================== 管理员：预热库存到Redis ====================
     @Override
     public void preloadStockToRedis() {
+        // 1. 查询所有已发布【正在生效中】优惠券列表
         List<Coupon> couponList = list(new LambdaQueryWrapper<Coupon>()
-                .eq(Coupon::getStatus, CouponStatusEnum.PUBLISH.getStatus())
-                .le(Coupon::getStartTime, LocalDateTime.now())
-                .ge(Coupon::getEndTime, LocalDateTime.now())
+                .eq(Coupon::getStatus, CouponStatusEnum.PUBLISH.getStatus()) // 状态 = 已发布
+                .le(Coupon::getStartTime, LocalDateTime.now()) // 开始时间 <= 当前时间
+                .ge(Coupon::getEndTime, LocalDateTime.now()) // 结束时间 >= 当前时间
         );
-
+        // 2. 遍历所有有效优惠券，把库存写入Redis，过期时间为24小时
         for (Coupon coupon : couponList) {
+            // 拼接Redis的key 例：coupon:stock:1001
             String stockKey = CouponConstant.COUPON_STOCK_PRE_KEY + coupon.getId();
+            // 把【总库存】存入Redis
             redisUtil.set(stockKey, coupon.getTotalStock(), 24 * 3600);
             log.info("【Redis库存预热】券ID：{}，库存：{}", coupon.getId(), coupon.getTotalStock());
         }
@@ -98,7 +101,7 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> impleme
             throw new BizException(ResultCode.REPEAT_RECEIVE);
         }
 
-        // 2. 校验优惠券
+        // 2. 校验优惠券时间、状态
         Coupon coupon = getById(couponId);
         if (coupon == null) {
             throw new BizException(ResultCode.COUPON_NOT_EXIST);
@@ -135,7 +138,7 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, Coupon> impleme
 
         log.info("【普通领取成功】用户：{}，券ID：{}", userId, couponId);
     }
-
+    // ==================== 用户：秒杀领取 ====================
     @Override
     public Result<String> seckillCoupon(Long couponId) {
         Long userId = UserContext.getUserId();
